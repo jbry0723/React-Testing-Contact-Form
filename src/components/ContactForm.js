@@ -15,10 +15,10 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="firstName">First Name*</label>
-          <input
+          <input id="firstName"
             name="firstName"
             placeholder="Edd"
-            ref={register({ required: true, maxLength: 3 })}
+            ref={register({ required: true, maxLength: 24 })}
           />
           {errors.firstName && (
             <p>Looks like there was an error: {errors.firstName.type}</p>
@@ -54,6 +54,7 @@ const ContactForm = () => {
         <div>
           <label htmlFor="message">Message</label>
           <textarea
+            data-testid="message"
             name="message"
             id="message" 
             ref={register({ required: false })} 
@@ -64,7 +65,7 @@ const ContactForm = () => {
             {JSON.stringify(data, null, 2)}
           </pre>
         )}
-        <input type="submit" />
+        <input data-testid="button" type="submit" />
       </form>
     </div>
   );
